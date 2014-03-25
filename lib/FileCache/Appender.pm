@@ -1,7 +1,7 @@
 package FileCache::Appender;
 use strict;
 use warnings;
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -70,7 +70,7 @@ sub file {
     my ( $self, $path ) = @_;
     $path = path($path)->absolute;
     unless ( ref $self ) {
-        $self = $global //= $self->new;
+        $self = $global ||= $self->new;
     }
     my $cache = $self->{_fd_cache};
     unless ( $cache->{$path} ) {

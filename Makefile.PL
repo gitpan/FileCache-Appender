@@ -1,7 +1,7 @@
 use 5.008;
 use strict;
 use warnings;
-use ExtUtils::MakeMaker 6.3002;
+use ExtUtils::MakeMaker 6.64;
 
 WriteMakefile(
     NAME          => 'FileCache::Appender',
@@ -10,13 +10,13 @@ WriteMakefile(
     ABSTRACT_FROM => 'lib/FileCache/Appender.pm',
     LICENSE       => 'perl',
     PL_FILES      => {},
-    PREREQ_PM     => { 'Path::Tiny' => 0, },
+    PREREQ_PM     => { 'Path::Tiny' => 0.012, },
     TEST_REQUIRES => {
         'Test::Most'         => 0.22,
         'Test::FailWarnings' => 0,
     },
     CONFIGURE_REQUIRES => {
-        'ExtUtils::MakeMaker' => 6.3002,
+        'ExtUtils::MakeMaker' => 6.64,
     },
     dist       => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean      => { FILES    => 'FileCache-Appender-*' },
