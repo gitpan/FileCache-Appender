@@ -1,7 +1,7 @@
 package FileCache::Appender;
 use strict;
 use warnings;
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -13,7 +13,7 @@ FileCache::Appender - cache file handles opened for appending
 
 =head1 VERSION
 
-0.01
+This document describes FileCache::Appender version 0.03
 
 =head1 SYNOPSIS
 
@@ -88,9 +88,32 @@ sub file {
     return $cache->{$path};
 }
 
+=head2 $self->clear
+
+clear the cache
+
+=cut
+
+sub clear {
+    my $self = shift;
+    $self->{_fd_cache}   = {};
+    $self->{_open_count} = 0;
+    return;
+}
+
 1;
 
 __END__
+
+=head1 CAVEATS
+
+If you need to append data to a big number of files, perhaps you should use a
+database.
+
+Module does not perform any checks if file handle is still actual. If you
+closed file handle that you have got from cache, you still may get this handle
+next time you call I<file>. If file was renamed, you still may get the handle
+pointing to it when requesting file using the old name.
 
 =head1 BUGS
 

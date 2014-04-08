@@ -28,4 +28,4 @@ resources:
   homepage: https://github.com/trinitum/perl-FileCache-Appender
   license: http://dev.perl.org/licenses/
   repository: git://github.com/trinitum/perl-FileCache-Appender
-version: 0.02
+version: 0.03
